@@ -98,30 +98,39 @@ var Thing = require('./../js/google.js').googleModule;
 
       script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
       document.getElementsByTagName('head')[0].appendChild(script);
+
+      map.data.setStyle(function(feature) {
+        var magnitude = feature.getProperty('mag');
+        return {
+          icon: getCircle(magnitude)
+        };
+      });
     }
-    // 
-    //
-    // function getCircle(magnitude) {
-    //   return {
-    //     path: google.maps.SymbolPath.CIRCLE,
-    //     fillColor: 'red',
-    //     fillOpacity: .2,
-    //     scale: Math.pow(2, magnitude) / 2,
-    //     strokeColor: 'white',
-    //     strokeWeight: .5
-    //   };
+
+
+    function getCircle(magnitude) {
+      return {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: 'red',
+        fillOpacity: .2,
+        scale: Math.pow(2, magnitude) / 2,
+        strokeColor: 'white',
+        strokeWeight: .5
+      };
     }
 
     window.eqfeed_callback = function(results) {
-      for (var i = 0; i < results.features.length; i++) {
-        var coords = results.features[i].geometry.coordinates;
-        var latLng = new google.maps.LatLng(coords[1],coords[0]);
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map
-        });
-      }
-    }
+      map.data.addGeoJson(results);
+      // for (var i = 0; i < results.features.length; i++) {
+      //   var coords = results.features[i].geometry.coordinates;
+      //   var latLng = new google.maps.LatLng(coords[1],coords[0]);
+      //   var marker = new google.maps.Marker({
+      //     position: latLng,
+      //     map: map
+      //   });
+    // }
+
+    };
 
     initialize(map);
     eqfeed_callback();

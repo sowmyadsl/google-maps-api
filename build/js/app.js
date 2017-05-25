@@ -7,7 +7,7 @@ Thing.prototype.geocodeAddress = function(address, locationData) {
   $.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}`)
   .then(function(response) {
     locationData(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
-  })
+  });
 };
 
 
@@ -114,6 +114,13 @@ var Thing = require('./../js/google.js').googleModule;
 
       script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
       document.getElementsByTagName('head')[0].appendChild(script);
+
+      map.data.setStyle(function(feature) {
+        var magnitude = feature.getProperty('mag');
+        return {
+          icon: getCircle(magnitude)
+        };
+      });
     }
 
 
@@ -129,15 +136,17 @@ var Thing = require('./../js/google.js').googleModule;
     }
 
     window.eqfeed_callback = function(results) {
-      for (var i = 0; i < results.features.length; i++) {
-        var coords = results.features[i].geometry.coordinates;
-        var latLng = new google.maps.LatLng(coords[1],coords[0]);
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map
-        });
-      }
-    }
+      map.data.addGeoJson(results);
+      // for (var i = 0; i < results.features.length; i++) {
+      //   var coords = results.features[i].geometry.coordinates;
+      //   var latLng = new google.maps.LatLng(coords[1],coords[0]);
+      //   var marker = new google.maps.Marker({
+      //     position: latLng,
+      //     map: map
+      //   });
+    // }
+
+    };
 
     initialize(map);
     eqfeed_callback();
