@@ -4,13 +4,25 @@
 
 ## description
 
-A google map that lets the user find their current location and also search any location.We also mapped earthquake_GeoJSONP using the magnitude of an earthquake at that particular location.
+A website to show locations via google maps api. A feature is included to bring the map back to the user's current location, and we have included earthquake data from the USGS using an earthquake_GeoJSONP datafile, using the magnitude of an earthquake at that particular location to create proportionally sized red circles.
 
 _landing page:_
 ![](https://github.com/sowmyadsl/google-maps-api/blob/master/img/Screen%20Shot%202017-05-25%20at%203.38.47%20PM.png?raw=true)
 
 ### Setup/Installation Requirements
 
+Download this repository at https://github.com/gravytates/google-maps-api.git
+Open in desktop
+Run:
+```
+$ npm install
+```
+```
+$ gulp build --production
+```
+```
+$ gulp serve
+```
 
 ## Known Bugs
 
@@ -22,14 +34,12 @@ Find us on github!
 
 ## Technologies Used
 
-* Ruby
-* Sinatra
 * HTML
 * CSS
 * Bootstrap https://getbootstrap.com/
 * ES6
 * Jquery https://jquery.com/
-* Activerecord
+* Node
 
 ### License
 
