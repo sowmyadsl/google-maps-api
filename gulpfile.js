@@ -100,5 +100,3 @@ gulp.task('jshint', function(){
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
-
-
