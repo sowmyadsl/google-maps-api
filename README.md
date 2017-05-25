@@ -6,7 +6,7 @@
 
 A website to show locations via google maps api. A feature is included to bring the map back to the user's current location, and we have included earthquake data from the USGS using an earthquake_GeoJSONP datafile, using the magnitude of an earthquake at that particular location to create proportionally sized red circles.
 
-_landing page:_
+**_landing page:_**
 ![](https://github.com/sowmyadsl/google-maps-api/blob/master/img/Screen%20Shot%202017-05-25%20at%203.38.47%20PM.png?raw=true)
 
 ### Setup/Installation Requirements
