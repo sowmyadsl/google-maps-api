@@ -7,7 +7,7 @@
 A google map that lets the user find their current location and also search any location.We also mapped earthquake_GeoJSONP using the magnitude of an earthquake at that particular location.
 
 _landing page:_
-
+![](https://github.com/sowmyadsl/google-maps-api/blob/master/img/Screen%20Shot%202017-05-25%20at%203.38.47%20PM.png?raw=true)
 
 ### Setup/Installation Requirements
 
